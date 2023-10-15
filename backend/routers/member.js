@@ -72,6 +72,21 @@ router.get("/member",auth,async (req,res)=>{
 })
 
 
+// retrive test
+router.get("/test",async (req,res)=>{
+
+    try { 
+        const task = await Member.find({});
+        res.status(201).send(task)
+        
+    } catch (error) {
+        res.status(400).send(error)
+        
+    }
+
+})
+
+
 
 
 // delete the Member

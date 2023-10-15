@@ -25,7 +25,7 @@ router.get("/homepackages",async (req,res)=>{
 // retrive 3 coaches 
 router.get("/homecoach",async (req,res)=>{
     try {  
-        const coach = await Coach.find({},{profile:1,firstName:1,discription:1,_id:0}).limit(3);
+        const coach = await Coach.find({}).limit(3);
        
         res.status(201).send(coach)       
     } catch (error) {
