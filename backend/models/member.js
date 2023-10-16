@@ -31,9 +31,12 @@ const memberSheam = new Schema(
 
         gender: {type: 'String',},
 
-        paid :{type: 'String', required: false},
+         paid:{type: 'String', required: false},
 
-        packageName: {type: 'String', required: false},
+        paidAmount :{type: Number},
+        
+
+        packageNo: {type: 'String', required: false},
         selectedExerciseNo:[{ type : 'String' }],
         tokens: [{
             token : String,

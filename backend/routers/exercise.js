@@ -5,7 +5,7 @@ const Exercise = require('../models/exercise')
 const  auth = require ('../middleware/adiminAutho')
 
 // add exercise
-router.post('/exercise',auth, async (req, res) => {
+router.post('/exercise', async (req, res) => {
   const exercis = new Exercise(req.body);
     try {
         await exercis.save();
@@ -18,7 +18,7 @@ router.post('/exercise',auth, async (req, res) => {
 });
 
 //retrieve all exercises
-router.get("/exercise",auth,async (req,res)=>{
+router.get("/exercise",async (req,res)=>{
     try {  
         const coach = await Exercise.find({})
        
@@ -30,7 +30,7 @@ router.get("/exercise",auth,async (req,res)=>{
 
 
 // delete Exercise
-router.delete("/exercise/:id",auth, async(req,res)=>{
+router.delete("/exercise/:id", async(req,res)=>{
     try {
         const delateExercise = await Exercise.findByIdAndDelete(res.params.id,res.body)
 
@@ -46,4 +46,25 @@ router.delete("/exercise/:id",auth, async(req,res)=>{
     }
 })
 
+
+
+
+// get  one by id 
+router.get("/exercise/:exerciseID", async (req, res) => {
+
+    try {
+        const exercise = await Exercise.findOne({exerciseID: req.params.exerciseID});
+
+        res.status(201).send(exercise)    
+  
+       
+  
+    } catch (error) {
+        res.status(400).send(error)
+  
+    }
+  
+  })
+
+  
 module.exports = router;

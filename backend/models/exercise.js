@@ -11,7 +11,7 @@ const exerciseSheama = new Schema(
 
         image:{ type: 'String', required: false, },
 
-        vedioUrl: {type: 'String',  required: false},
+        videioUrl: {type: 'String',  required: false},
 
         step: [{type: 'String', required: false}],
     }

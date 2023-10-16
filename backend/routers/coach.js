@@ -43,7 +43,7 @@ router.post('/coach/logout',coachAuth, async (req, res) => {
 
 
 // add new coach
-router.post('/coach',auth, async (req, res) => {
+router.post('/coach', async (req, res) => {
      const coach = new Coach(req.body);
       try {
         await coach.save();
@@ -57,7 +57,7 @@ router.post('/coach',auth, async (req, res) => {
 )
 
 // retrive all coaches 
-router.get("/coach",auth,async (req,res)=>{
+router.get("/coach",async (req,res)=>{
 
     try {  
         const task = await Coach.find({});
@@ -71,21 +71,23 @@ router.get("/coach",auth,async (req,res)=>{
 
 
 // delete coach
-router.delete("/coach/:id",auth, async(req,res)=>{
+router.delete('/package/:coachID', async (req, res) => {
     try {
-        const delateCoach = await Coach.findByIdAndDelete(res.params.id,res.body)
-
-        if(!delateCoach)
-        {
-           return res.status(400).send()
-        }
-        return res.status(400).send(delateCoach)
-
+      const coachIDToDelete = req.params.coachID;
+  
+      // Use findOneAndDelete to delete by coachID
+      const deletedPackage = await Coach.findOneAndDelete({ coachID: coachIDToDelete });
+  
+      if (!deletedPackage) {
+        return res.status(404).json({ message: 'Member not found' });
+      }
+  
+      return res.status(200).json({ message: 'Member deleted successfully', deletedPackage });
     } catch (error) {
-        
-        res.status(404).send(error)
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
     }
-})
+  });
 
 
 

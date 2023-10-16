@@ -3,7 +3,7 @@ import logo from './images/aboutAs.png';
 const AboutUs = () => {
   return (
     <div className='bg-gray-400 flex flex-col items-center justify-center'>
-      <h1 className='text-4xl md:text-6xl font-bold mb-1'>About Us</h1>
+      <h1 className='text-4xl md:text-5xl font-bold mb-1'>About Us</h1>
       <div className='flex flex-col md:flex-row max-w-screen-xl mx-auto p-1'>
         <div className='md:w-2/3 p-2 mr-4'>
           <img

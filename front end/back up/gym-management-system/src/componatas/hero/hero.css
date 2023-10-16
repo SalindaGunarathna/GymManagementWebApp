@@ -1,0 +1,10 @@
+.hero-background {
+    background: url('../images/herosection.png') no-repeat center center fixed;
+    background-size: cover;
+    /*background-position: center top;*/
+    height: 100vh;
+    
+   
+     /* Adjust the height as needed */
+  }
+  

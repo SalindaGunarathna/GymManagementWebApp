@@ -5,6 +5,8 @@ import PopulurPackages from '../componatas/PopulurPackages'
 import CoachCard from '../componatas/CoachCard'
 import Ribbon from "../componatas/Ribbon1"
 
+import MembershipCard from '../componatas/MembershipCard'
+
 const Home = () => {
   return (
     <div>
@@ -14,12 +16,11 @@ const Home = () => {
       <PopulurPackages/>
       <Ribbon/>
       <CoachCard/>
+      <MembershipCard/>
       
       
 
-      <p>
       
-      </p>
     </div>
     
   )

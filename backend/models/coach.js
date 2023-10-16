@@ -27,7 +27,7 @@ const coachSheama = new Schema(
 
         discription: { type: String, required: false,},
 
-        phoneNO: { type: "number", required: false,},
+        mobileNO: { type: "number", required: false,},
 
         tokens: [{
             token : String,
