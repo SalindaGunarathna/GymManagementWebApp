@@ -22,8 +22,6 @@ const adminSheam = new Schema(
 
         role: {type: String,  required: false},
 
-        privilager: {type: String, required: false},
-
         password: { type: String, 
         trim : true,
         required : false,},

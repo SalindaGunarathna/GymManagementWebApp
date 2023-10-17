@@ -19,35 +19,12 @@ const EditMember = () => {
         const fetchData = async () => {
             try {
                 console.log("Fetching member data...");
-                const response = await axios.get(`http://localhost:4000/member/${memberId}`);
+                const response = await axios.get(`http://localhost:4000/member/a`);
                 const fetchedMember = response.data;
                 setMember(fetchedMember);
                 setLoading(false);
     
-                // Retrieve selected exercise numbers from the member
-                const exerciseSheduleNumbers = fetchedMember.selectedExerciseNo;
-    
-                setSelectedExercisesList(exerciseSheduleNumbers);
-    
-                const exerciseShudelDetails = [];
-    
-                exerciseSheduleNumbers.forEach((exerciseNo) => {
-                    // Make an API request to get exercise details by exercise number
-                    axios.get(`http://localhost:4000/exercise/${exerciseNo}`)
-                        .then((exerciseResponse) => {
-    
-                            exerciseShudelDetails.push(exerciseResponse.data);
-    
-                            // Once all exercises are fetched, set them in state
-                            if (exerciseShudelDetails.length === exerciseSheduleNumbers.length) {
-                                setSelectedExercise(exerciseShudelDetails);
-                            }
-                        })
-                        .catch((error) => {
-                            // Handle errors while fetching individual exercises
-                            console.error(`Error fetching exercise ${exerciseNo}:`, error);
-                        });
-                });
+              
             } catch (error) {
                 console.log("Error fetching member data:", error);
                 setLoading(false);
@@ -137,40 +114,6 @@ const EditMember = () => {
 
 
 
-    const handleAddExerciseSchedule =async () => {
-
-        if (!exercisesID) {
-            alert('Please fill exercisesID');
-            return;
-        }
-        setSelectedExercisesList([...selectedExercisesList, exercisesID]);
-
-        const url2 = `http://localhost:4000/member/da`;
-
-        try {
-            const response = await axios.put(url2, {
-                selectedExerciseNo: selectedExercisesList,
-            });
-
-            if (response.status === 200) {
-                alert('Add Exercis successfully ');
-
-
-                const updatedResponse = await axios.get(url2);
-                const updatedMember = updatedResponse.data;
-                setMember(updatedMember);
-
-            }
-            
-
-
-
-        } catch (error) {
-            console.error('Failed to update paid info', error);
-        }
-
-
-    };
 
     return (
         <div>
@@ -234,8 +177,8 @@ const EditMember = () => {
                 </div>
             </div>
             <div>
-                <div>
-                    <div className="bg-gray-200 p-4">
+                <div className='bg-black'>
+                    <div className=" p-4 bg">
                         <input
                             type="text"
                             placeholder="Package No"
@@ -252,21 +195,21 @@ const EditMember = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="bg-gray-200 p-4">
+                    <div className="bg-black p-4">
                         <button
                             className="bg-blue-500 text-white px-3 py-1"
                             onClick={handleGetExercises}
                         >
-                            Get Exercises
+                            See Exercises
                         </button>
                     </div>
-                    <div className="mt-4 border p-4 md-5">
-                        <h2 className="text-lg font-semibold mb-2">Exercise List</h2>
+                    <div className=" border p-4  bg-black text-white">
+                        <h2 className="text-lg font-semibold mb-2">Schedule Exercise List</h2>
                         <div className="flex space-x-4 text-sm font-semibold items-center">
                             <div className="w-1/5 font-bold">Exercise ID</div>
                             <div className="w-1/5 font-bold">Exercise Name</div>
                             <div className="w-1/5 font-bold">Video URL</div>
-                            <div className="w-1/5 font-bold">Action</div>
+                            
                         </div>
                         {exercises.map((exercise) => (
                             <div key={exercise.exerciseID} className="flex space-x-4 items-center">
@@ -278,55 +221,16 @@ const EditMember = () => {
                                 </div>
                                 <div className="w-1/5">{exercise.videioUrl}</div>
                                 <div className="w-1/5">
-                                   
+                                    
                                 </div>
                             </div>
                         ))}
                     </div>
 
 
-                    <button
-                        className="bg-blue-500 text-white px-3 py-1"
-                        onClick={handleAddExerciseSchedule}
-                    >
-                        Add Exercise Schedule
-                    </button>
-                    <div>
-                    <input
-                            type="text"
-                            placeholder=" Insert exercises no"
-                            className="w-48 bg-slate-500"
-                            value={exercisesID}
-                            onChange={(e) => setExercisesID(e.target.value)}
-                        />
+                    
 
-
-                    </div>
-
-
-                    <div className="mt-4 border p-4 md-5">
-                        <h2 className="text-lg font-semibold mb-2">Exercise List</h2>
-                        <div className="flex space-x-4 text-sm font-semibold items-center">
-                            <div className="w-1/5 font-bold">Exercise ID</div>
-                            <div className="w-1/5 font-bold">Exercise Name</div>
-                            <div className="w-1/5 font-bold">Video URL</div>
-                            <div className="w-1/5 font-bold">Action</div>
-                        </div>
-                        {selectedExercise.map((exercise) => (
-                            <div key={exercise.exerciseID} className="flex space-x-4 items-center">
-                                <div className="w-1/5">
-                                        {exercise.exerciseID}
-                                </div>
-                                <div className="w-1/5">
-                                    {exercise.exercisName}
-                                </div>
-                                <div className="w-1/5">{exercise.videioUrl}</div>
-                                <div className="w-1/5">
-                                   
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    
 
                 </div>
             </div>

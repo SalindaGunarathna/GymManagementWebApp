@@ -7,6 +7,8 @@ import Ribbon from "../componatas/Ribbon1"
 
 import MembershipCard from '../componatas/MembershipCard'
 
+
+
 const Home = () => {
   return (
     <div>
@@ -17,6 +19,7 @@ const Home = () => {
       <Ribbon/>
       <CoachCard/>
       <MembershipCard/>
+
       
       
 

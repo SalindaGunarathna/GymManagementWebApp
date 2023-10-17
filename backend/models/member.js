@@ -8,36 +8,36 @@ const Schema = mongoose.Schema;
 const memberSheam = new Schema(
     {
         memberID:{type: 'String',required: false,
-            unique: true,
+            unique: true, default:"",
         },
-        firstName:{ type: 'String',required: false},
+        firstName:{ type: 'String',required: false,default: '',},
 
-        lastName:{type: 'String',required: false,},
+        lastName:{type: 'String',required: false,default: '',},
 
-        email:{ type: 'String',required: false,
+        email:{ type: 'String',required: false,default: '',
         unique: true,},
 
-        password: { type: 'String', required : false,trim : true},
+        password: { type: 'String', required : false,trim : true,default: '',},
 
-        contactNo:{type:'number'},
+        contactNo:{type:'number',default: '',},
 
-        profile:{ type: 'String', required: false, },
+        profile:{ type: 'String', required: false,default: '', },
 
-        age: {type: 'number',  required: false},
+        age: {type: 'number',  required: false,default: '',},
 
-        weight: {type: 'String', required: false},
+        weight: {type: 'String', required: false,default: '',},
 
-        height: {type: 'String', required: false},
+        height: {type: 'String', required: false,default: '',},
 
-        gender: {type: 'String',},
+        gender: {type: 'String',default: '',},
 
-         paid:{type: 'String', required: false},
+         paid:{type: 'String', required: false,default: '',},
 
-        paidAmount :{type: Number},
+        paidAmount :{type: Number,default: '',},
         
 
-        packageNo: {type: 'String', required: false},
-        selectedExerciseNo:[{ type : 'String' }],
+        packageNo: {type: 'String', required: false,default: '',},
+        selectedExerciseNo:[{ type : 'String' ,default: '',}],
         tokens: [{
             token : String,
         

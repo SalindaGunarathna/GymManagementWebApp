@@ -71,7 +71,7 @@ router.get("/coach",async (req,res)=>{
 
 
 // delete coach
-router.delete('/package/:coachID', async (req, res) => {
+router.delete('/coach/:coachID', async (req, res) => {
     try {
       const coachIDToDelete = req.params.coachID;
   
@@ -88,6 +88,45 @@ router.delete('/package/:coachID', async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
   });
+
+
+
+  router.get("/coach/:coachID", async (req, res) => {
+
+    try {
+        const coach = await Coach.findOne({coachID: req.params.coachID});
+        res.status(201).send(coach)
+
+    } catch (error) {
+        res.status(400).send(error)
+
+    }
+
+})
+
+//   updata payment status
+router.put('/coach/:coachID', async (req, res) => {
+    try {
+        const coachID = req.params.coachID;
+        const updatedData = req.body; 
+
+        const coach = await Coach.findOneAndUpdate({ coachID }, updatedData, {
+            new: true, // To get the updated coach
+        });
+
+        
+        if (!coach) {
+            return res.status(404).json({ message: 'Member not found' });
+        }
+
+        res.status(200).json({ message: 'Member updated successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
+
 
 
 

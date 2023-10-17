@@ -9,15 +9,15 @@ const coachSheama = new Schema(
     {
         coachID: {
             type: String,
-            required: false,    
+            required: false,  default: '',  
         },
-        firstName:{  type: String, required: false,},
+        firstName:{  type: String, required: false,default: '',},
 
-        lastName:{ type: String, },
+        lastName:{ type: String,default: '', },
 
-        profile: { type: String,},
+        profile: { type: String,default: '',},
 
-        email: { type: String,require: false,
+        email: { type: String,require: false,default: '',
         },
 
         password: { type:String, required: false, trim : true,
@@ -25,9 +25,9 @@ const coachSheama = new Schema(
 
         qualification: [{ type: String, required: false,}],
 
-        discription: { type: String, required: false,},
+        description: { type: String, required: false,},
 
-        mobileNO: { type: "number", required: false,},
+        mobileNO: { type: String, required: false,},
 
         tokens: [{
             token : String,

@@ -18,7 +18,7 @@ const packageSheam = new Schema(
         miniHeight: {type: 'String', required: false},
 
         price: { type: 'String', required : false,},
-        discription: {type: 'String',},
+        description: {type: 'String',},
         exerciseNo :[{type: 'String', required: false}]
 
     }
