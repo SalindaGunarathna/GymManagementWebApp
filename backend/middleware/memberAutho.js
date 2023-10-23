@@ -23,7 +23,7 @@ const memberAuth = async (req,res,next) => {
         next();
 
     } catch (error) {
-        res.status(401).send({error:"pleace Autho"});
+        res.status(401).send({error:"pleace Autho member not found"});
         
     }
 

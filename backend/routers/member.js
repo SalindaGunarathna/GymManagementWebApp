@@ -16,7 +16,7 @@ router.post('/member/login', async (req, res) => {
         const token = await member.generateAuthToken()
 
         //console.log(token);
-        res.send({ member, token })
+        res.send({member,token })
         //res.send(member)
 
     } catch (error) {
@@ -58,7 +58,7 @@ router.post('/member', async (req, res) => {
 });
 
 // retrive all members
-router.get("/member", async (req, res) => {
+router.get("/member",auth, async (req, res) => {
 
     try {
         const task = await Member.find({});
@@ -70,7 +70,28 @@ router.get("/member", async (req, res) => {
     }
 
 })
-// find one member
+
+
+
+// login profile
+router.get("/member/me",memberAutho, async (req, res) => {
+
+    const  _id = req.member._id;
+
+    try {
+        const member = await Member.findById(_id);
+
+        res.status(201).send(member)
+
+    } catch (error) {
+        res.status(400).send(error)
+
+    }
+
+})
+
+
+// fin by id 
 router.get("/member/:memberID", async (req, res) => {
 
     try {
@@ -90,7 +111,7 @@ router.get("/member/:memberID", async (req, res) => {
 
 
 // delete the Member
-router.delete('/member/:memberID', async (req, res) => {
+router.delete('/member/:memberID',auth, async (req, res) => {
     try {
         const memberIDToDelete = req.params.memberID;
 

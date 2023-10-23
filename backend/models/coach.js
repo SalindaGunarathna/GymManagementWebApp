@@ -36,6 +36,8 @@ const coachSheama = new Schema(
     }     
 )
 
+
+
 coachSheama.pre("save", async function (next)
     {
         const coach = this;
@@ -47,6 +49,8 @@ coachSheama.pre("save", async function (next)
         next();
     }
 )
+
+
 
 coachSheama.statics.findByCredentialsCoach = async (email,password) => {
     const coach =await Choach.findOne({email})

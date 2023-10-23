@@ -19,14 +19,14 @@ const AdminPage = () => {
 
       <AdminNavBar />
       <Routes>
-        <Route path="/admin/packages" element={<Packages/>} />
-        <Route path="/ddd" element={<Coaches/>} />
+        <Route path="/" element={<Packages/>} />
+        <Route path="/vvv" element={<Coaches/>} />
         <Route path="/fff" element={<Members/>} />
         <Route path="/hh" element={<EditMember/>} />
         <Route path="/d" element={<AddCoach/>} />
-        <Route path="/d" element={<AddPackage/>} />
+        <Route path="/admin/addnewpackage" element={<AddPackage/>} />
         <Route path="/d" element={<AddNewAdmin/>} />
-        <Route path="/" element={<AddExercise/>} />
+        <Route path="/gg" element={<AddExercise/>} />
 
 
         

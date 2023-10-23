@@ -3,7 +3,7 @@ import backGroundimage from '../componatas/images/AddExercise.png';
 
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import AdminNavBar from '../componatas/adminNavBar/AdminNavBar';
 
 const AddExercise = () => {
     const [image, setImage] = useState('https://www.dmoose.com/cdn/shop/articles/Main-Image_f389f0f9-ef75-42ec-98bf-0f0259ad540a.jpg?v=1666358433');
@@ -58,6 +58,8 @@ const AddExercise = () => {
 
     return (
         <div>
+            <AdminNavBar />
+        <div>
             <div className='bg-cover bg-center bg-opacity-5  h-screen ' style={{ backgroundImage: `url(${backGroundimage})` }}>
                 <div className='flex'>
                     <div className='w-1/3  p-5'>
@@ -79,29 +81,31 @@ const AddExercise = () => {
                             
                         </div>
                     </div>
-                    <div className=' text-white p-5'>
+                    <div className=' text-white p-5 bg-slate-400 bg-opacity-25'
+                     style={{ borderRadius: '20px' }}
+                    >
                         <h1 className='text-5xl justify-center ml-15'> New Exercise</h1>
                         <h2 className='text-2xl mt-5'> Exercise No   </h2>
                         <input
                             type="text"
                             placeholder="Exercise No"
-                            className="w-60 text-black"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" 
                             onChange={(e) => setExerciseID(e.target.value)}
                         />
                         <h2 className='text-2xl mt-5'> Exercise Name  </h2>
                         <input
                             type="text"
                             placeholder="Exercise Name "
-                            className="w-60 text-black"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" 
                             value={exercisName}
                             onChange={(e) => setExercisName(e.target.value)}
                         />
                         
-                        <h2 className='text-2xl mt-5'>Minimum Weight </h2>
+                        <h2 className='text-2xl mt-5'>vedio link </h2>
                         <input
                             type="text"
                             placeholder="Minimum Weight"
-                            className="w-60 text-black"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" 
                             value={videioUrl}
                             onChange={(e) => setVideioUrl(e.target.value)}
                         />
@@ -146,6 +150,7 @@ const AddExercise = () => {
 
             </div>
 
+        </div>
         </div>
     );
 };

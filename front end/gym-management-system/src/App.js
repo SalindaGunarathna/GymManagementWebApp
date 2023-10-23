@@ -11,8 +11,17 @@ import Footer  from "./componatas/Footer";
 import ProfileChoach from "./pages/ProfileChoach";
 import AddMemeber from "./pages/AddMemeber";
 import LoginPage from "./pages/LoginPage";
-
+import Coaches  from "./pages/Coaches";
+import Packages from "./pages/Packages";
+import Members from "./pages/Members";
+import EditMember from "./pages/EditMember";
+import AddPackage from "./pages/AddPackage";
+import AddExercise   from "./pages/AddExercise";
+import AddCoach from "./pages/AddCoach";
 import ProfileMember from "./pages/ProfileMember";
+import AddNewAdmin from "./pages/AddNewAdmin";
+
+import MemberProfilePage from "./pages/MemberProfilePage";
 const App = () => {
   return (
     <div>
@@ -22,20 +31,22 @@ const App = () => {
 
 
       <Routes>
-        <Route path="/admin" element={<HomePage />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/member" element={<Member />} />
-        <Route path="/d" element={<AdminPage />} />
-        <Route path="/d" element={<AddMemeber />} />
-        <Route path="/ff" element={<ProfileChoach />} />
-        <Route path="/d" element={<ProfileMember />} />
-        <Route path="/" element={<LoginPage/>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage/>} />
+        
+        <Route path="/register" element={<AddMemeber />} />
+        <Route path="/member" element={<MemberProfilePage />} />
+        <Route path="/coach" element={<ProfileChoach />} />
 
 
-
-      
-
-
+        <Route path="/admin" element={<Packages />} />
+        <Route path="/Coaches" element={<Coaches/>} />
+        <Route path="/members" element={<Members/>} />
+        <Route path="/editmember" element={<EditMember/>} />
+        <Route path="/addPackage" element={<AddPackage/>} />
+        <Route path="/addCoach" element={<AddCoach/>} />
+        <Route path="/addExercise" element={<AddExercise/>} />
+        <Route path="/addNewAdmin" element={<AddNewAdmin/>} />
 
 
         

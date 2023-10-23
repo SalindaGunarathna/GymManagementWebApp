@@ -16,23 +16,17 @@ const Navbar = () => {
 
       <ul className="flex mr-3 rounded-sm " >
         <li className="list-none m-5 rounded-md">
-          <NavLink to="/" className="text-white p-2 hover:bg-blue-700 rounded-md" activeClassName="active">Home</NavLink>
+          <NavLink to="/" className="text-white p-2 hover:bg-slate-700 rounded-md" activeClassName="active">Home</NavLink>
         </li>
-        <li className="list-none m-5">
-          <NavLink to="/about" className="text-white p-2 hover:bg-blue-700 rounded-md">AboutUs</NavLink>
-        </li>
+        
         <li className="list-none m-5 ">
-          <NavLink to="/adminlogin" className="text-white p-2 hover:bg-blue-700 rounded-md">Login Admin</NavLink>
+          <NavLink to="/login" className="text-white p-2 hover:bg-bg-slate-700 rounded-md">Login</NavLink>
         </li>
+       
         <li className="list-none m-5">
-          <NavLink to="/coachlogin" className="text-white p-2 hover:bg-blue-700 rounded-md">Login Coach</NavLink>
+          <NavLink to="/register" className="text-white p-2 hover:bg-bg-slate-700 rounded-md">Rigister</NavLink>
         </li>
-        <li className="list-none m-5">
-          <NavLink to="/register" className="text-white p-2 hover:bg-blue-700 rounded-md">Rigister</NavLink>
-        </li>
-        <li className="list-none m-5">
-          <NavLink to="/memberlogin" className="text-white p-2 hover:bg-blue-700 rounded-md">Loging Member</NavLink>
-        </li>
+       
       </ul>
     </nav>
   );

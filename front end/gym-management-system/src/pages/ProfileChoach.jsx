@@ -1,7 +1,7 @@
 
 import image from '../componatas/images/addCoach.png';
-
-import React, {useMemo, useState } from 'react';
+import { Link } from 'react-router-dom'
+import React, {useMemo,useEffect, useState } from 'react';
 import axios from 'axios';
 const AddCoach = () => {
     const [profile, setProfile] = useState('https://img.freepik.com/free-photo/portrait-young-handsome-sportsman-holds-hand-chin-dark-background_613910-19200.jpg?size=626&ext=jpg&ga=GA1.1.1596761328.1697264654&semt=ais');
@@ -19,10 +19,20 @@ const AddCoach = () => {
 
     const [coach, setCoach] = useState([]);
 
+    const ID = localStorage.getItem('id');
+    
+    //const url = "http://localhost:4000/coach/ba";
 
-    const url = "http://localhost:4000/coach/ba";
+    useEffect(() => {
 
-    useMemo(() => {
+
+       
+        const ID = localStorage.getItem('id');
+        console.log(ID);
+
+        const url = `http://localhost:4000/coach/${ID}`;
+        
+
         const fetchData = async () => {
             try {
                 const response = await axios.get(url);
@@ -149,7 +159,7 @@ const AddCoach = () => {
                         <input
                             type="text"
                             placeholder="First Name"
-                            className="w-60 text-black"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                         />
@@ -157,7 +167,7 @@ const AddCoach = () => {
                         <input
                             type="text"
                             placeholder="Last Name"
-                            className="w-60 text-black"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
                         />
@@ -165,7 +175,7 @@ const AddCoach = () => {
                         <input
                             type="text"
                             placeholder="Email"
-                            className="w-60 text-black"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -174,7 +184,7 @@ const AddCoach = () => {
                         <input
                             type="text"
                             placeholder="Mobile No"
-                            className="w-60 text-black"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             value={mobileNO}
                             onChange={(e) => setMobileNo(e.target.value)}
                         />
@@ -182,7 +192,7 @@ const AddCoach = () => {
                         <input
                             type="text"
                             placeholder="New Password "
-                            className="w-60 text-black"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -198,7 +208,7 @@ const AddCoach = () => {
                     <input
                         type="text"
                         placeholder="Qualification"
-                        className="w-60 text-black ml-10 "
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         value={qualificationnew}
                         onChange={(e) => {
                             const updatedQualifications = [...qualification];
@@ -208,7 +218,7 @@ const AddCoach = () => {
                         key={index}
                     />
                 ))}
-
+ 
 
                 <button className="bg-gray-700 text-white p-2 mt-2 ml-5 w-40 rounded-md" onClick={addQualification}>
                     Add Qualification
@@ -219,9 +229,14 @@ const AddCoach = () => {
             </div>
             <div className='bg-black'>
                 <button className="bg-blue-500 text-white p-2 ml-5 mt-2 w-40 rounded-md" onClick={handleButtonClick}>
-                    Submit
+                    Save
                 </button>
-
+                <Link to ="/">
+                <button className="bg-blue-500 text-white p-2 ml-5 mt-2 w-40 rounded-md" >
+                    Log out
+                </button>
+                </Link>
+                
 
             </div>
 

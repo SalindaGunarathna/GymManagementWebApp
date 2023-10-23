@@ -6,7 +6,7 @@ const Package = require('../models/package')
 const  auth = require('../middleware/adiminAutho')
 
 // add package
-router.post('/package', async (req, res) => {
+router.post('/package',auth, async (req, res) => {
   const pakage = new Package(req.body);
     try {
         await pakage.save();
@@ -20,7 +20,7 @@ router.post('/package', async (req, res) => {
 
 
 //retrieve all packages
-router.get("/package",async (req,res)=>{
+router.get("/package",auth,async (req,res)=>{
     try {  
         const coach = await Package.find({})
        
@@ -31,7 +31,7 @@ router.get("/package",async (req,res)=>{
 })
 
 // delete package
-router.delete('/package/:packageNo', async (req, res) => {
+router.delete('/package/:packageNo',auth, async (req, res) => {
     try {
       const packageNoToDelete = req.params.packageNo;
   

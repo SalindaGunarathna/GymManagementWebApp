@@ -15,6 +15,7 @@ const Home = () => {
 
       <Hero/>
       <Aboutus/>
+    
       <PopulurPackages/>
       <Ribbon/>
       <CoachCard/>

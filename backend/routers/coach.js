@@ -5,7 +5,7 @@ const coachAuth = require('../middleware/coachAutho');
 const Coach = require('../models/coach')
 const auth =require( '../middleware/adiminAutho')
 
-// import auth from '../middleware/adiminAutho'
+//import auth from '../middleware/adiminAutho'
 // login
 router.post('/coach/login', async (req, res) => {
 
@@ -43,7 +43,7 @@ router.post('/coach/logout',coachAuth, async (req, res) => {
 
 
 // add new coach
-router.post('/coach', async (req, res) => {
+router.post('/coach',auth, async (req, res) => {
      const coach = new Coach(req.body);
       try {
         await coach.save();
@@ -57,7 +57,7 @@ router.post('/coach', async (req, res) => {
 )
 
 // retrive all coaches 
-router.get("/coach",async (req,res)=>{
+router.get("/coach",auth,async (req,res)=>{
 
     try {  
         const task = await Coach.find({});
@@ -71,7 +71,7 @@ router.get("/coach",async (req,res)=>{
 
 
 // delete coach
-router.delete('/coach/:coachID', async (req, res) => {
+router.delete('/coach/:coachID',auth, async (req, res) => {
     try {
       const coachIDToDelete = req.params.coachID;
   
@@ -110,7 +110,7 @@ router.put('/coach/:coachID', async (req, res) => {
         const coachID = req.params.coachID;
         const updatedData = req.body; 
 
-        const coach = await Coach.findOneAndUpdate({ coachID }, updatedData, {
+        const coach = await Coach.findOneAndUpdate({coachID }, updatedData, {
             new: true, // To get the updated coach
         });
 

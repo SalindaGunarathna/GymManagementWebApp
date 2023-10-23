@@ -29,7 +29,7 @@ router.post('/admin/login', async (req, res) => {
 })
 
 
-router.post('/admin/logout',auth, async (req, res) => {
+router.post('/admin/logout', async (req, res) => {
     try {
         req.admin.tokens = req.admin.tokens.filter((token)=>{
             return token.token !==req.token;
@@ -60,7 +60,7 @@ router.post('/admin', async (req, res) => {
 
 
 //retrieve all admin
-router.get("/admin",auth,async (req,res)=>{
+router.get("/admin",async (req,res)=>{
     try {  
         const coach = await Admin.find({})
        
@@ -71,7 +71,7 @@ router.get("/admin",auth,async (req,res)=>{
 })
 
 // delete admin
-router.delete("/admin/:id",auth, async(req,res)=>{
+router.delete("/admin/:id", async(req,res)=>{
     try {
         const delateAdmin = await Admin.findByIdAndDelete(res.params.id,res.body)
 
