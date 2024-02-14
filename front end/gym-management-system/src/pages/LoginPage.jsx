@@ -9,7 +9,7 @@ import jwt_decode from "jwt-decode";
 
 const LoginPage = () => {
 
-   // <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -24,11 +24,39 @@ const LoginPage = () => {
 
 
 
+    function handleCredentialResponse(res) {
+        console.log("encode jwt ID token" + res.credential);
+        var userObject = jwt_decode(res.credential);
+        console.log(userObject);
+
+        setUser(userObject);
+        setGoogleAuth("google");
+        document.getElementById("signInDiv").hidden = true;
+
+        console.log(googleAutho);
+
+    }
 
 
 
 
+    useEffect(() => {
 
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        /* global google */
+
+        google.accounts.id.initialize({
+
+            client_id: "1078634557844-5uq383t1midhavuvgnn3rbur2gujjp6m.apps.googleusercontent.com",
+            callback: handleCredentialResponse
+        })
+
+        google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            { theme: "outline", size: "large" }
+        );
+
+    }, []);
 
 
 
@@ -37,17 +65,8 @@ const LoginPage = () => {
 
         setUser(email);
 
-        //console.log(password);
-       // console.log(email);
-
-
-
         if (role === "Admin") {
 
-            console.log(password);
-            console.log(email);
-            
-            
             try {
                 const adminUrl = 'http://localhost:4000/admin/login'
 
@@ -80,17 +99,53 @@ const LoginPage = () => {
 
             } catch (error) {
                 setUser("not");
-            }
             
-           
+            
+
+
         }
-       
+    }else if (role === "coach") {
+    
+            try {
+                console.log(password);
+                console.log(email);
+
+                const coachrnUrl = 'http://localhost:4000/coach/login'
+
+                const coachResponse = await axios.post(coachrnUrl, {
+                    email: email,
+                    password: password
+
+                });
+
+                const token = coachResponse.data;
+
+                console.log(coachResponse);
+
+                console.log(token.coach.coachID);
 
 
-        if (role === "member" ){
+                localStorage.setItem('Token', token.token);
+                localStorage.setItem('id', token.coach.coachID)
 
-           // setEmail(user.email)
-           // setPassword(user.aud)
+                if (token.coach.coachID) {
+                    setUser("Is");
+                    window.location.href = '/coach/'
+                } else {
+                    setUser("not");
+                }
+
+
+            } catch (error) {
+                setUser("not");
+
+            }
+        }else {
+
+            setEmail(user.email)
+            setPassword(user.aud)
+
+
 
 
             try {
@@ -126,43 +181,6 @@ const LoginPage = () => {
         }
 
 
-        if (role === "coach") {
-
-            try {
-                console.log(password);
-                console.log(email);
-
-                const coachrnUrl = 'http://localhost:4000/coach/login'
-
-                const coachResponse = await axios.post(coachrnUrl, {
-                    email: email,
-                    password: password
-
-                });
-
-                const token = coachResponse.data;
-
-                console.log(coachResponse);
-
-                console.log(token.coach.coachID);
-
-
-                localStorage.setItem('Token', token.token);
-                localStorage.setItem('id', token.coach.coachID)
-
-                if (token.coach.coachID) {
-                    setUser("Is");
-                    window.location.href = '/coach/'
-                } else {
-                    setUser("not");
-                }
-
-
-            } catch (error) {
-                setUser("not");
-
-            }
-        }
 
         // ...
     };
@@ -170,6 +188,7 @@ const LoginPage = () => {
 
     return (
         <div>
+             <script src="https://accounts.google.com/gsi/client" async defer></script>
             <div
                 className="bg-cover flex bg-center bg-opacity-5  h-screen "
                 style={{ backgroundImage: `url(${image})` }}
@@ -238,7 +257,10 @@ const LoginPage = () => {
                             )}
 
 
-
+                            <button
+                                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                onClick={handleSignIn}
+                            >Submit data</button>
                             <button
                                 class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                 onClick={handleSignIn}
@@ -257,7 +279,17 @@ const LoginPage = () => {
                             </svg>
                             Sign in with Google
                         </button> */}
-                       
+                        <div className="App">
+
+                            <div id="signInDiv"></div>
+                            {
+                                Object.keys(user).length != 0
+
+
+
+                            }
+
+                        </div>
                     </div>
 
 

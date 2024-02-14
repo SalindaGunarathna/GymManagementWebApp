@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 
 const adminSheam = new Schema(
     {
-        adminRegNo:{type: String,required: false,
+     adminRegNo:{type: String,required: false,
             unique: false,
         },
         firstName:{ type: String,required: false},
@@ -18,7 +18,7 @@ const adminSheam = new Schema(
 
         contactNo:{type:"number"},
 
-        profile:{ type: String, required: false, },
+        profile:{ type: String, required: false, }, 
 
         role: {type: String,  required: false},
 

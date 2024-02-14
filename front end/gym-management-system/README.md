@@ -1,43 +1,6 @@
-# Gym Management System Web Application 
+# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## 
-![HomePage!](./public/HomePage.png)
-this is the howe page  of web page there more few section this page 
-- About Us
-- Popular Packages 
-- Coaches 
-- Memberships cards 
-
-login page have three options to login 
- - Aa admin
- - As Coach 
-- As  Members
-![Login page !](./public/LoginPage.png)
-
-New member can create account 
-![Login page !](./public/CreateAcoount.png)
-
-So members and Coaches can login to the their profile and can change their details 
-
-Member can se their exercise  schedule 
-
-Wen login Admin 
-admin Can 
-- CRUD for operation  packages
-- CRUD for operation Exercise 
-- CRUD for operation admin
-- Edit Member Exercises schedules and payments details 
-
-## Features
-Authentication 
- - It use JWT authentication  wen login to the system it create token 
-
-Security 
-- All password will decrypt and encrypt  and store in data base using bycript  Library
-- All the admin operation have Authenticated  
-
 
 ## Available Scripts
 
@@ -66,7 +29,15 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run eject`
 
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## Learn More
 

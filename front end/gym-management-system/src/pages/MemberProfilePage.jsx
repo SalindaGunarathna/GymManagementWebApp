@@ -50,14 +50,9 @@ const MemberProfilePage = () => {
                     }
                     );
 
-
-
-
-
                 const fetchedCoach = response.data;
 
                 console.log(fetchedCoach);
-
 
 
                 setFirstName(fetchedCoach.firstName);

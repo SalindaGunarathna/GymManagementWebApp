@@ -21,7 +21,14 @@ import AddCoach from "./pages/AddCoach";
 import ProfileMember from "./pages/ProfileMember";
 import AddNewAdmin from "./pages/AddNewAdmin";
 
+import Test from "./pages/Test";
+
+import NEwProfileMember from "./pages/NEwProfileMember";
+
 import MemberProfilePage from "./pages/MemberProfilePage";
+
+import CreateProduct from "./pages/CreateProduct";
+
 const App = () => {
   return (
     <div>
@@ -33,6 +40,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage/>} />
+        <Route path="/bb" element={<Test />} />
+        <Route path="/ll" element={<CreateProduct />} />
+        
         
         <Route path="/register" element={<AddMemeber />} />
         <Route path="/member" element={<MemberProfilePage />} />

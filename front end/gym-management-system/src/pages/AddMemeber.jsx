@@ -7,7 +7,7 @@ import jwt_decode from "jwt-decode";
 
 import axios from 'axios';
 const AddMemeber = () => {
-  //  <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     const [memberID, setMemberID] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -28,44 +28,44 @@ const AddMemeber = () => {
 
 
 
-    // function handleCredentialResponse(res) {
-    //     console.log("encode jwt ID token" + res.credential);
-    //     var userObject = jwt_decode(res.credential);
-    //     console.log(userObject);
+    function handleCredentialResponse(res) {
+        console.log("encode jwt ID token" + res.credential);
+        var userObject = jwt_decode(res.credential);
+        console.log(userObject);
 
-    //     setUser(userObject);
-    //     setGoogleAuth("google");
-    //     document.getElementById("signInDiv").hidden = true;
+        setUser(userObject);
+        setGoogleAuth("google");
+        document.getElementById("signInDiv").hidden = true;
 
-    //     console.log(googleAutho);
+        console.log(googleAutho);
 
-    // }
-
-
+    }
 
 
-    // useEffect(() => {
 
 
-    //     /* global google */
-    //     try {
-    //         google.accounts.id.initialize({
-
-    //             client_id: "1078634557844-5uq383t1midhavuvgnn3rbur2gujjp6m.apps.googleusercontent.com",
-    //             callback: handleCredentialResponse
-    //         })
-
-    //         google.accounts.id.renderButton(
-    //             document.getElementById("signInDiv"),
-    //             { theme: "outline", size: "large" }
-    //         );
+    useEffect(() => {
 
 
-    //     } catch (error) {
+        /* global google */
+        try {
+            google.accounts.id.initialize({
 
-    //     }
+                client_id: "1078634557844-5uq383t1midhavuvgnn3rbur2gujjp6m.apps.googleusercontent.com",
+                callback: handleCredentialResponse
+            })
 
-    // }, []);
+            google.accounts.id.renderButton(
+                document.getElementById("signInDiv"),
+                { theme: "outline", size: "large" }
+            );
+
+
+        } catch (error) {
+
+        }
+
+    }, []);
 
 
 
@@ -226,7 +226,7 @@ const AddMemeber = () => {
                             />
 
                         </div>
-                        {/* <div className="App">
+                        <div className="App">
 
                             <div id="signInDiv"></div>
                             {
@@ -236,7 +236,7 @@ const AddMemeber = () => {
 
                             }
 
-                        </div> */}
+                        </div>
 
 
                         <button className="bg-blue-500 text-white p-2 ml-15 mt-2 w-40 rounded-md" onClick={handleButtonClick}>
